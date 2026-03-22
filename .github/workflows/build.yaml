@@ -105,6 +105,7 @@ jobs:
           accountId: ${{ secrets.CLOUDFLARE_ACCOUNT_ID }}
           workingDirectory: ./dist
           gitHubToken: ${{ secrets.GITHUB_TOKEN }}
+          packageManager: pnpm
           command: |
             deploy
           vars: |
