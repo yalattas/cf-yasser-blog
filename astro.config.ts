@@ -1,5 +1,4 @@
 import { defineConfig, envField, fontProviders } from "astro/config";
-import cloudflare from "@astrojs/cloudflare";
 import tailwindcss from "@tailwindcss/vite";
 import sitemap from "@astrojs/sitemap";
 import remarkToc from "remark-toc";
@@ -16,7 +15,6 @@ import { SITE } from "./src/config";
 export default defineConfig({
   site: SITE.website,
   output: "static",
-  adapter: cloudflare(),
   integrations: [
     sitemap({
       filter: page => SITE.showArchives || !page.endsWith("/archives"),
