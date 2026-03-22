@@ -28,7 +28,7 @@ jobs:
         uses: actions/setup-node@v6
         with:
           node-version: ${{ env.node_version }}
-          cache: 'npm'
+          cache: 'pnpm'
       - name: Install dependencies
         shell: bash
         run: pnpm i
@@ -56,8 +56,8 @@ jobs:
         uses: actions/setup-node@v6
         with:
           node-version: ${{ env.node_version }}
-          cache: 'npm'
-      - name: Clean npm cache
+          cache: 'pnpm'
+      - name: Clean pnpm cache
         shell: bash
         run: pnpm cache clean --force
       - name: Install dependencies
