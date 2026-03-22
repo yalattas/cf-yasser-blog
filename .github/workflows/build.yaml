@@ -111,7 +111,7 @@ jobs:
           workingDirectory: .
           gitHubToken: ${{ secrets.GITHUB_TOKEN }}
           command: |
-            pages deploy dist --project-name=${{ env.APP_NAME }}-pr-${{ github.event.pull_request.number }}
+            deploy
           vars: |
             KEY
       - name: print deployment-url

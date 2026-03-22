@@ -78,7 +78,7 @@ jobs:
           workingDirectory: .
           gitHubToken: ${{ secrets.GITHUB_TOKEN }}
           command: |
-            pages deploy dist
+            deploy
           vars: |
             KEY
       - name: Print deployment URL
