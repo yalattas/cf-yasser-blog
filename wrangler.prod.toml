@@ -1,0 +1,17 @@
+name = "PLACEHOLDER"
+main = "dist/index.js"
+compatibility_date = "2022-07-12"
+workers_dev = true
+
+[env.production]
+send_metrics=true
+
+[env.preview]
+send_metrics=false
+
+[observability]
+enabled = true
+
+[[routes]]
+pattern = "blog.yasser.solutions/*"
+zone_id = "c341e7449b40f675a1f9ed6b383f39e2"
