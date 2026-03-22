@@ -25,9 +25,10 @@ jobs:
       - name: Inject slug/short variables
         uses: rlespinasse/github-slug-action@v5   # this will put output as environment variable
       - name: Setup pnpm
-        uses: pnpm/action-setup@v4
+        uses: pnpm/action-setup@v5
         with:
           run_install: false
+          version: 10
       - name: Setup Node.js
         uses: actions/setup-node@v6
         with:
