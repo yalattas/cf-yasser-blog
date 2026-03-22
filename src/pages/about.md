@@ -9,7 +9,7 @@ I build the infrastructure that keeps large-scale systems running: multi-cluster
 
 **Currently:**
 - **MLOps Engineer at [Salla](https://salla.com)** — Saudi Arabia's leading e-commerce platform. Building AI/ML infrastructure from scratch, serving 400M+ daily API requests for 70K merchants.
-- **Technical Co-founder at [Barakah](https://barakah.app)** — Head of Infrastructure for a food-tech startup.
+- **Technical Co-founder at [Barakah](https://barakah.app)** — Head of Infrastructure for a food-tech startup (full-time from July 2026).
 
 **Background:** 7+ years in DevOps, SRE, and now MLOps. I operate with a DevSecFinOps mindset — every infrastructure decision goes through four lenses: scalability, security, cost, and business impact.
 
@@ -19,5 +19,5 @@ I build the infrastructure that keeps large-scale systems running: multi-cluster
 
 Find me at:
 - 🌐 [yasser.solutions](https://yasser.solutions)
-- 💼 [LinkedIn](https://linkedin.com/in/yalattas)
+- 💼 [LinkedIn](https://linkedin.com/in/yasseralattas)
 - 🐙 [GitHub](https://github.com/yalattas)
