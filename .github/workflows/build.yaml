@@ -108,11 +108,11 @@ jobs:
         with:
           apiToken: ${{ secrets.CLOUDFLARE_API_TOKEN }}
           accountId: ${{ secrets.CLOUDFLARE_ACCOUNT_ID }}
-          workingDirectory: .
+          workingDirectory: ./dist
           gitHubToken: ${{ secrets.GITHUB_TOKEN }}
           packageManager: pnpm
           command: |
-            pages deploy dist
+            deploy
           vars: |
             KEY
       - name: print deployment-url
