@@ -1,45 +1,46 @@
 # Agent: Analytics Reviewer
 
-## Role
-Review GTM/GA4 setup, verify tracking is working, and suggest analytics improvements for the blog.
-
 ## Setup
-- **GTM Container:** GTM-5VPJL3VJ (blog.yasser.solutions dedicated)
-- **GTM snippet location:** `src/layouts/Layout.astro` — in `<head>` and top of `<body>`
-- **GA4:** Configure via GTM (not hardcoded) — add GA4 Configuration tag in GTM UI
+- **GTM Container:** `GTM-5VPJL3VJ` (dedicated for blog.yasser.solutions)
+- **GTM snippet:** `src/layouts/Layout.astro` — `<head>` + top of `<body>`
+- **GA4:** Configure via GTM (NOT hardcoded in HTML)
 
-## GTM/GA4 Configuration Checklist
+## GTM Tags to Set Up (in GTM UI)
+1. **GA4 Configuration** — fires on All Pages, triggers pageview
+2. **Scroll Depth** — 25/50/75/100% thresholds
+3. **Post Read** — scroll 100% on `/posts/*` URLs
+4. **Outbound Click** — built-in GTM trigger
+5. **Copy Code Block** — click on copy button in code snippets
 
-### Tags to set up in GTM
-1. **GA4 Configuration tag** — fires on All Pages, sends to your GA4 Measurement ID
-2. **Scroll Depth** — built-in GTM trigger, 25/50/75/100% thresholds
-3. **Post Read** — custom event when user reaches end of post (`scroll_depth = 100%` on `/posts/*`)
-4. **Outbound Click** — built-in GTM trigger for external link clicks
-5. **Copy Code Block** — custom event when user copies a code snippet (great for technical blogs)
-
-### GA4 Events to track
-| Event | Trigger | Custom Dimensions |
-|-------|---------|-------------------|
-| `page_view` | All Pages | post_title, post_tags |
-| `scroll` | Scroll Depth 75% | post_slug |
-| `post_read` | Scroll 100% on /posts/* | post_title, read_time |
-| `click_outbound` | External links | link_url, link_text |
-| `rss_subscribe` | Click on RSS link | — |
-| `copy_code` | Click on code copy button | code_language |
-
-### Verification Steps
-1. Open GTM Preview mode → visit blog.yasser.solutions
-2. Check all page_view events fire on navigation
-3. Use GA4 DebugView to confirm events arrive
-4. Verify no CORS errors in browser console (Network tab → filter by `google-analytics.com`)
-
-## Files to check
-- `src/layouts/Layout.astro` — GTM snippet
-- `public/_headers` — CSP allows GA/GTM domains
-- `src/config.ts` — `website` URL matches GTM trigger rules
+## GA4 Events to Track
+| Event | When | Dimensions |
+|-------|------|------------|
+| `page_view` | Every page | post_title, post_tags |
+| `scroll` | 75% scroll depth | post_slug |
+| `post_read` | 100% scroll on /posts/* | post_title |
+| `click_outbound` | External link click | link_url |
+| `rss_subscribe` | Click on RSS icon | — |
 
 ## Monthly Review Tasks
-- Check GA4 Acquisition report: which channels drive traffic?
-- Check top posts by pageviews — which topics resonate?
-- Check scroll depth: do readers finish posts or bounce early?
-- Check outbound clicks: what external resources do readers find valuable?
+Open GA4 → check:
+1. **Acquisition** — which channels send traffic? (Organic, LinkedIn, Direct?)
+2. **Top posts** — which posts get the most pageviews?
+3. **Scroll depth** — do readers actually finish posts?
+4. **Outbound clicks** — what resources do readers click through to?
+
+## Verification Steps
+1. Open GTM Preview mode → visit blog.yasser.solutions
+2. Confirm `page_view` fires on each navigation
+3. Open GA4 DebugView → confirm events arrive
+4. Check browser console → no CORS errors for `google-analytics.com`
+
+## Files to Check (in repo)
+- `src/layouts/Layout.astro` — GTM snippet present?
+- `public/_headers` — CSP includes GA/GTM domains?
+
+## CSP Domains Required for GA/GTM
+```
+script-src: https://www.googletagmanager.com https://www.google-analytics.com
+connect-src: https://www.google-analytics.com https://region1.google-analytics.com https://analytics.google.com https://stats.g.doubleclick.net
+frame-src: https://www.googletagmanager.com
+```

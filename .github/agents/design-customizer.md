@@ -1,38 +1,70 @@
 # Agent: Design Customizer
 
-## Role
-Customize the visual design, layout, and UX of the blog while staying true to Yasser's identity.
+## Brand Identity (Memorize This)
 
-## Brand Identity
-- **Colors (dark mode):** Background `#0d1117`, Foreground `#e6edf3`, Accent `#2563eb`, Border `#30363d`
-- **Colors (light mode):** Background `#ffffff`, Foreground `#1a1a2e`, Accent `#2563eb`, Border `#d0d7de`
-- **Font:** Google Sans Code (technical, clean, monospace-adjacent)
-- **Vibe:** GitHub-dark inspired, professional, engineer aesthetic — no gradients, no flashy animations
-- **Anti-patterns:** No orange, no purple, no Comic Sans energy, no excessive shadows
+### Colors
+| Token | Dark Mode | Light Mode | Usage |
+|-------|-----------|------------|-------|
+| Background | `#0d1117` | `#ffffff` | Page background |
+| Foreground | `#e6edf3` | `#1a1a2e` | Body text |
+| Accent | `#2563eb` | `#2563eb` | Links, CTAs, highlights |
+| Muted | `#161b22` | `#f0f4f8` | Cards, secondary bg |
+| Border | `#30363d` | `#d0d7de` | Dividers, borders |
 
-## Key Files
-| File | Purpose |
-|------|---------|
-| `src/styles/global.css` | CSS variables for colors, base styles |
-| `src/styles/typography.css` | Prose/markdown typography |
-| `src/layouts/Layout.astro` | Base HTML layout, meta tags |
-| `src/components/Header.astro` | Navigation header |
-| `src/components/Footer.astro` | Footer |
-| `src/components/Card.astro` | Blog post card on listing page |
+### Typography
+- Font: `Google Sans Code` (monospace-adjacent, technical)
+- Fallback: `Courier New`, `monospace`
+
+### Aesthetic Rules
+- GitHub-dark inspired. Clean, minimal, engineering aesthetic
+- **No:** gradients, drop shadows, rounded corners overkill, stock photo vibes, orange, purple
+- **Yes:** whitespace, sharp edges, blue accent, code blocks, terminal feel
+
+## Key Files to Edit
+| File | What it controls |
+|------|-----------------|
+| `src/styles/global.css` | CSS color variables (the source of truth) |
+| `src/styles/typography.css` | Prose/markdown styling |
+| `src/layouts/Layout.astro` | Base HTML, meta tags, GTM |
+| `src/components/Header.astro` | Navigation |
+| `src/components/Footer.astro` | Footer links |
+| `src/components/Card.astro` | Post card on listing page |
 | `src/pages/index.astro` | Homepage hero + recent posts |
-| `src/config.ts` | Site-wide config (title, desc, pagination) |
+| `src/config.ts` | Site-wide settings |
 
-## Common Customization Tasks
-- **Change accent color:** Edit `--accent` in `src/styles/global.css`
-- **Update hero text:** Edit `src/pages/index.astro` hero section
-- **Change posts per page:** Edit `postPerPage` in `src/config.ts`
-- **Add/remove nav links:** Edit `src/components/Header.astro`
-- **Update footer:** Edit `src/components/Footer.astro`
-- **Modify post card layout:** Edit `src/components/Card.astro`
+## Common Tasks
+
+### Change accent color
+Edit `--accent` in `src/styles/global.css` — both light and dark mode.
+
+### Update hero text
+Edit the `<h1>` and `<p>` in `src/pages/index.astro` hero section.
+
+### Add/remove nav items
+Edit `src/components/Header.astro` — find the `<ul id="menu-items">` block.
+
+### Update post card layout
+Edit `src/components/Card.astro`.
+
+### Generate og:image banner
+Use Python + Pillow:
+```python
+# System fonts available at /usr/share/fonts/truetype/dejavu/
+# Bold: DejaVuSans-Bold.ttf
+# Regular: DejaVuSans.ttf  
+# Monospace: DejaVuSansMono-Bold.ttf
+
+# Output to: public/og-blog.jpg (1200x630)
+```
 
 ## Design Rules
-1. Always test both light and dark mode after any color change
-2. Keep contrast ratio ≥ 4.5:1 for accessibility (WCAG AA)
-3. No new external CSS dependencies — Tailwind only
-4. If adding animations, use `prefers-reduced-motion` media query
-5. Keep the mobile layout clean — most technical readers are on desktop but mobile matters
+1. Test both light and dark mode after any color change
+2. Contrast ratio ≥ 4.5:1 (WCAG AA minimum)
+3. Tailwind only — no new CSS libraries
+4. If adding animation, wrap in `prefers-reduced-motion`
+5. Mobile-first — check at 375px width
+
+## Current Asset Paths
+- Blog og:image: `public/og-blog.jpg` (1200×630)
+- Favicon: `public/favicon.svg`
+- Headshot source (for new banners): `~/projects/cf-yasser-cv/src/assets/headshot.jpg`
