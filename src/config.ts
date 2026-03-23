@@ -14,7 +14,7 @@ export const SITE = {
   editPost: {
     enabled: false,
     text: "Edit on GitHub",
-    url: "https://github.com/yalattas/cf-yasser-blog/edit/main/src/content/blog/",
+    url: "https://github.com/yalattas/cf-yasser-blog/edit/main/src/data/blog/",
   },
   dynamicOgImage: true,
   dir: "ltr",

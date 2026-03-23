@@ -10,21 +10,21 @@ Technical blog by [Yasser Alattas](https://yasser.solutions) — MLOps, Cloud In
 
 - **[Astro](https://astro.build/)** + **[AstroPaper](https://github.com/satnaing/astro-paper)** theme
 - **Cloudflare Pages** — static, edge-delivered globally
-- **Markdown/MDX** — write posts as `.md` files in `src/content/blog/`
+- **Markdown/MDX** — write posts as `.md` files in `src/data/blog/`
 - Auto sitemap, RSS feed, dynamic OG images, syntax highlighting (Shiki)
 
 ## 🚀 Local Development
 
 ```bash
-npm install
-npm run dev
+pnpm install
+pnpm run dev
 ```
 
 Open [http://localhost:4321](http://localhost:4321)
 
 ## ✍️ Writing a Post
 
-Create a new `.md` file in `src/content/blog/`:
+Create a new `.md` file in `src/data/blog/`:
 
 ```markdown
 ---
@@ -43,7 +43,7 @@ Push to `main` → Cloudflare Pages auto-deploys.
 ## 📦 Build & Deploy
 
 ```bash
-npm run build          # builds to ./dist
+pnpm run build          # builds to ./dist
 npx wrangler pages deploy dist  # manual deploy
 ```
 
