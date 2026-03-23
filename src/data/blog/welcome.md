@@ -2,7 +2,7 @@
 title: "Welcome to My Blog"
 description: "MLOps, Cloud Infrastructure, and SRE insights from the trenches — 400M+ daily requests and counting."
 pubDatetime: 2026-03-22T08:00:00Z
-tags: ["mlops", "infrastructure", "devops"]
+tags: ["mlops", "infrastructure", "devops", "kubernetes", "eks", "sre", "terraform", "karpenter"]
 draft: false
 ---
 
