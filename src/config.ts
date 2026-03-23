@@ -3,7 +3,7 @@ export const SITE = {
   author: "Yasser Alattas",
   profile: "https://yasser.solutions/",
   desc: "MLOps, Cloud Infrastructure, and SRE insights from the trenches.",
-  title: "Yasser Alattas",
+  title: "Yasser Alattas | MLOps, Kubernetes & SRE Blog",
   ogImage: "og-blog.jpg",
   lightAndDarkMode: true,
   postPerIndex: 4,
