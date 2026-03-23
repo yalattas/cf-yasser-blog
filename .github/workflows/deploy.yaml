@@ -4,7 +4,9 @@ on:
   release:
     types:
       - published
-
+env:
+  node_version: 24
+  pnpm_version: 10
 jobs:
   build:
     runs-on: ubuntu-latest
@@ -17,17 +19,17 @@ jobs:
         uses: pnpm/action-setup@v5
         with:
           run_install: false
-          version: 10
+          version: ${{ env.pnpm_version }}
+      - name: Setup Node.js
+        uses: actions/setup-node@v6
+        with:
+          node-version: ${{ env.node_version }}
+          cache: 'pnpm'
       - name: Update package.json version
         run: |
           VERSION="${{ github.event.release.tag_name }}"
           VERSION="${VERSION#v}"
           pnpm version "$VERSION" --no-git-tag-version
-      - name: Setup pnpm
-        uses: pnpm/action-setup@v5
-        with:
-          run_install: false
-          version: 10
       - name: Install dependencies
         shell: bash
         run: pnpm i --frozen-lockfile
@@ -48,7 +50,7 @@ jobs:
       deployments: write
     name: 🚀 deploy
     env:
-      APP_NAME: yasser-services
+      APP_NAME: yasser-blog
     steps:
       - uses: actions/checkout@v6
         with:
@@ -57,7 +59,12 @@ jobs:
         uses: pnpm/action-setup@v5
         with:
           run_install: false
-          version: 10
+          version: ${{ env.pnpm_version }}
+      - name: Setup Node.js
+        uses: actions/setup-node@v6
+        with:
+          node-version: ${{ env.node_version }}
+          cache: 'pnpm'
       - name: Download build artifact
         uses: actions/download-artifact@v8
         with:
@@ -100,7 +107,12 @@ jobs:
         uses: pnpm/action-setup@v5
         with:
           run_install: false
-          version: 10
+          version: ${{ env.pnpm_version }}
+      - name: Setup Node.js
+        uses: actions/setup-node@v6
+        with:
+          node-version: ${{ env.node_version }}
+          cache: 'pnpm'
       - name: Update package.json version
         run: |
           VERSION="${{ github.event.release.tag_name }}"
