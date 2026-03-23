@@ -21,5 +21,3 @@ This blog is where I share what I learn from building and running systems at sca
 Currently building MLOps from scratch at [Salla](https://salla.com) (Saudi Arabia's largest e-commerce platform) and co-founding [Barakah](https://barakah.app) as Head of Infrastructure.
 
 More posts coming soon.
-
-— Yasser
