@@ -1,0 +1,16 @@
+name = "PLACEHOLDER"
+compatibility_date = "2024-09-23"
+assets = { directory = "dist" }
+
+[env.production]
+send_metrics=true
+
+[env.preview]
+send_metrics=false
+
+[observability]
+enabled = true
+
+[[routes]]
+pattern = "blog.yasser.solutions/*"
+zone_id = "c341e7449b40f675a1f9ed6b383f39e2"

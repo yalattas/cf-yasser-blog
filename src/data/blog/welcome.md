@@ -1,7 +1,7 @@
 ---
 title: "Welcome to My Blog"
 description: "MLOps, Cloud Infrastructure, and SRE insights from the trenches — 400M+ daily requests and counting."
-pubDatetime: 2026-03-29T08:00:00Z
+pubDatetime: 2026-03-22T08:00:00Z
 tags: ["mlops", "infrastructure", "devops"]
 draft: false
 ---
@@ -21,5 +21,3 @@ This blog is where I share what I learn from building and running systems at sca
 Currently building MLOps from scratch at [Salla](https://salla.com) (Saudi Arabia's largest e-commerce platform) and co-founding [Barakah](https://barakah.app) as Head of Infrastructure.
 
 More posts coming soon.
-
-— Yasser

@@ -1,0 +1,110 @@
+name: Deploy Release
+
+on:
+  release:
+    types:
+      - published
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    name: 🏗️ build
+    steps:
+      - uses: actions/checkout@v6
+        with:
+          token: ${{ secrets.GITHUB_TOKEN }}
+      - name: Update package.json version
+        run: |
+          VERSION="${{ github.event.release.tag_name }}"
+          VERSION="${VERSION#v}"
+          pnpm version "$VERSION" --no-git-tag-version
+      - name: Setup pnpm
+        uses: pnpm/action-setup@v5
+        with:
+          run_install: false
+          version: 10
+      - name: Setup Node.js
+        uses: actions/setup-node@v6
+        with:
+          node-version: 24
+          cache: 'pnpm'
+      - name: Install dependencies
+        shell: bash
+        run: pnpm i --frozen-lockfile
+      - name: Build the app
+        shell: bash
+        run: pnpm run build
+      - name: Upload build artifact
+        uses: actions/upload-artifact@v7
+        with:
+          name: release-build
+          path: ./dist
+
+  deploy:
+    runs-on: ubuntu-latest
+    needs: build
+    permissions:
+      contents: read
+      deployments: write
+    name: 🚀 deploy
+    env:
+      APP_NAME: yasser-services
+    steps:
+      - uses: actions/checkout@v6
+        with:
+          token: ${{ secrets.GITHUB_TOKEN }}
+      - name: Setup pnpm
+        uses: pnpm/action-setup@v5
+        with:
+          run_install: false
+          version: 10
+      - name: Download build artifact
+        uses: actions/download-artifact@v8
+        with:
+          name: release-build
+          path: ./dist
+      - name: Update wrangler.toml
+        run: |
+          sed -i 's/name = ".*"/name = "${{ env.APP_NAME }}"/g' wrangler.prod.toml
+          mv wrangler.prod.toml wrangler.toml
+      - name: Publish to Cloudflare
+        uses: cloudflare/wrangler-action@v3
+        id: deploy
+        env:
+          KEY: VALUE
+        with:
+          apiToken: ${{ secrets.CLOUDFLARE_API_TOKEN }}
+          accountId: ${{ secrets.CLOUDFLARE_ACCOUNT_ID }}
+          workingDirectory: .
+          gitHubToken: ${{ secrets.GITHUB_TOKEN }}
+          command: |
+            deploy
+          vars: |
+            KEY
+      - name: Print deployment URL
+        env:
+          DEPLOYMENT_URL: ${{ steps.deploy.outputs.deployment-url }}
+        run: echo $DEPLOYMENT_URL
+  release:
+    runs-on: ubuntu-latest
+    needs: deploy
+    permissions:
+      contents: write
+    name: 🏷️ release
+    steps:
+      - uses: actions/checkout@v6
+        with:
+          ref: main
+          token: ${{ secrets.GITHUB_TOKEN }}
+      - name: Update package.json version
+        run: |
+          VERSION="${{ github.event.release.tag_name }}"
+          VERSION="${VERSION#v}"
+          pnpm version "$VERSION" --no-git-tag-version
+      - name: commit version update
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "github-actions[bot]@users.noreply.github.com"
+          git add package.json
+          git commit -m "chore: Update version to ${{ github.event.release.tag_name }} [skip ci]"
+          git push

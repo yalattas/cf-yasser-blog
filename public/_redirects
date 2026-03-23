@@ -1,0 +1,2 @@
+# Redirect www to non-www
+https://www.blog.yasser.solutions/* https://blog.yasser.solutions/:splat 301

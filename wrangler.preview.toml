@@ -1,0 +1,12 @@
+name = "PLACEHOLDER"
+compatibility_date = "2024-09-23"
+assets = { directory = "dist" }
+
+[env.production]
+send_metrics=true
+
+[env.preview]
+send_metrics=false
+
+[observability]
+enabled = true
