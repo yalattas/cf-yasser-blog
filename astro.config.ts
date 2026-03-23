@@ -1,7 +1,6 @@
 import { defineConfig, envField, fontProviders } from "astro/config";
 import tailwindcss from "@tailwindcss/vite";
-// sitemap replaced by custom src/pages/sitemap.xml.ts for dynamic /sitemap.xml support
-// import sitemap from "@astrojs/sitemap";
+import sitemap from "@astrojs/sitemap";
 import remarkToc from "remark-toc";
 import remarkCollapse from "remark-collapse";
 import {
@@ -17,7 +16,9 @@ export default defineConfig({
   site: SITE.website,
   output: "static",
   integrations: [
-    // sitemap replaced by custom dynamic sitemap — see src/pages/sitemap.xml.ts
+    sitemap({
+      filter: page => SITE.showArchives || !page.endsWith("/archives"),
+    }),
   ],
   markdown: {
     remarkPlugins: [remarkToc, [remarkCollapse, { test: "Table of contents" }]],
