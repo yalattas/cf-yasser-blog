@@ -31,21 +31,41 @@ const {
 
 const socialImageURL = new URL(ogImage, Astro.url);
 
-const structuredData = {
-  "@context": "https://schema.org",
-  "@type": "BlogPosting",
-  headline: `${title}`,
-  image: `${socialImageURL}`,
-  datePublished: `${pubDatetime?.toISOString()}`,
-  ...(modDatetime && { dateModified: modDatetime.toISOString() }),
-  author: [
-    {
-      "@type": "Person",
-      name: `${author}`,
-      ...(profile && { url: profile }),
-    },
+const personData = {
+  "@type": "Person",
+  "@id": `${SITE.profile}#author`,
+  name: `${author}`,
+  url: `${SITE.profile}`,
+  sameAs: [
+    "https://linkedin.com/in/yasseralattas",
+    "https://github.com/yalattas",
   ],
+  jobTitle: "Senior MLOps & Cloud Infrastructure Engineer",
+  worksFor: { "@type": "Organization", name: "Salla" },
 };
+
+const structuredData = pubDatetime
+  ? {
+      "@context": "https://schema.org",
+      "@type": "BlogPosting",
+      headline: `${title}`,
+      description: `${description}`,
+      image: `${socialImageURL}`,
+      url: `${canonicalURL}`,
+      datePublished: `${pubDatetime?.toISOString()}`,
+      ...(modDatetime && { dateModified: modDatetime.toISOString() }),
+      author: [personData],
+      publisher: personData,
+      mainEntityOfPage: { "@type": "WebPage", "@id": `${canonicalURL}` },
+    }
+  : {
+      "@context": "https://schema.org",
+      "@type": "Blog",
+      name: `${SITE.title}`,
+      description: `${SITE.desc}`,
+      url: `${SITE.website}`,
+      author: personData,
+    };
 ---
 
 <!doctype html>
@@ -75,10 +95,16 @@ const structuredData = {
     <link rel="sitemap" href="/sitemap-index.xml" />
 
     <!-- Open Graph / Facebook -->
+    <meta property="og:type" content={pubDatetime ? "article" : "website"} />
+    <meta property="og:site_name" content={SITE.title} />
+    <meta property="og:locale" content="en_US" />
     <meta property="og:title" content={title} />
     <meta property="og:description" content={description} />
     <meta property="og:url" content={canonicalURL} />
     <meta property="og:image" content={socialImageURL} />
+    <meta property="og:image:width" content="1200" />
+    <meta property="og:image:height" content="630" />
+    <meta property="og:image:alt" content={title} />
 
     <!-- Article Published/Modified time -->
     {

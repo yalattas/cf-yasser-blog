@@ -11,11 +11,13 @@ export async function GET() {
     title: SITE.title,
     description: SITE.desc,
     site: SITE.website,
+    customData: `<language>en-us</language><managingEditor>${SITE.author}</managingEditor><webMaster>${SITE.author}</webMaster>`,
     items: sortedPosts.map(({ data, id, filePath }) => ({
       link: getPath(id, filePath),
       title: data.title,
       description: data.description,
       pubDate: new Date(data.modDatetime ?? data.pubDatetime),
+      author: SITE.author,
     })),
   });
 }
