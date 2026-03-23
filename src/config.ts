@@ -12,7 +12,7 @@ export const SITE = {
   showArchives: true,
   showBackButton: true,
   editPost: {
-    enabled: true,
+    enabled: false,
     text: "Edit on GitHub",
     url: "https://github.com/yalattas/cf-yasser-blog/edit/main/src/content/blog/",
   },
