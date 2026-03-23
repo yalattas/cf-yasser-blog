@@ -3,6 +3,7 @@ import IconMail from "@/assets/icons/IconMail.svg";
 import IconGitHub from "@/assets/icons/IconGitHub.svg";
 import IconBrandX from "@/assets/icons/IconBrandX.svg";
 import IconLinkedin from "@/assets/icons/IconLinkedin.svg";
+import IconWebsite from "@/assets/icons/IconWebsite.svg";
 import { SITE } from "@/config";
 
 interface Social {
@@ -13,6 +14,12 @@ interface Social {
 }
 
 export const SOCIALS: Social[] = [
+  {
+    name: "Website",
+    href: "https://yasser.solutions",
+    linkTitle: `${SITE.title}'s Portfolio`,
+    icon: IconWebsite,
+  },
   {
     name: "GitHub",
     href: "https://github.com/yalattas/",
