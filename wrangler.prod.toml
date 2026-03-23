@@ -12,5 +12,6 @@ send_metrics=false
 enabled = true
 
 [[routes]]
-pattern = "blog.yasser.solutions/*"
+pattern = "blog.yasser.solutions"
+custom_domain = true
 zone_id = "c341e7449b40f675a1f9ed6b383f39e2"
