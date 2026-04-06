@@ -2,7 +2,7 @@
 title: "What Anthropic's Labor Market Research Means for Saudi Arabia's White-Collar Future"
 description: "New research suggests AI's first impact won't be mass layoffs, but a quieter transformation of knowledge work, hiring patterns, and career pathways—with major implications for Saudi Arabia's young workforce."
 pubDatetime: 2026-04-06T20:00:00Z
-tags: ["ai", "labor-market", "saudi-arabia", "anthropic", "workplace"]
+tags: ["ai", "artificial-intelligence", "saudi-arabia", "anthropic", "claude"]
 draft: false
 ---
 
