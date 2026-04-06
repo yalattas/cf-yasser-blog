@@ -9,8 +9,16 @@ type Props = {
 };
 
 export async function getStaticPaths() {
-  const posts = await getCollection("blog", ({ data }) => !data.draft);
-  const postResult = posts.map(post => ({
+  // Import our existing post filter that handles scheduling logic
+  import postFilter from "@/utils/postFilter";
+  
+  // Get all non-draft posts
+  const allPosts = await getCollection("blog", ({ data }) => !data.draft);
+  
+  // Apply the same filter used in getSortedPosts to respect scheduledPostMargin
+  const publishedPosts = allPosts.filter(postFilter);
+  
+  const postResult = publishedPosts.map(post => ({
     params: { slug: getPath(post.id, post.filePath, false) },
     props: { post },
   }));
