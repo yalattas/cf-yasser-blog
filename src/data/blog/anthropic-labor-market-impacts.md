@@ -28,7 +28,7 @@ Reading past breathless headlines about "AI taking jobs," Anthropic's research r
 
 ## The Saudi Dimension: Why This Matters Here
 
-For Saudi Arabia—a nation actively transforming its economy under Vision 2030, aggressively investing in AI, and supporting a notably young workforce—this research carries particular weight.
+For Saudi Arabia a nation actively transforming its economy under Vision 2030, aggressively investing in AI, and supporting a notably young workforce this research carries particular weight.
 
 Saudi Arabia faces a unique convergence: centrally planned digital transformation, substantial public-sector employment, ambitious AI investment, and a youth-heavy demographic entering the workforce. The Kingdom's [National Strategy for Data & AI](https://sdaia.gov.sa/en/SDAIA/SdaiaStrategies/Pages/NationalStrategyForDataAndAI.aspx) explicitly links AI adoption to education and labor market alignment.
 
@@ -36,7 +36,7 @@ What this likely means for Saudi Arabia:
 
 1. **Knowledge work redesign comes first**. Before we see broad job losses, organizations will restructure white-collar workflows around AI, particularly in software development, customer operations, finance, admin roles, content creation, translation, and analyst functions.
 
-2. **Entry-level skills pressure**. As AI absorbs routine tasks traditionally handled by junior workers (basic coding, content drafting, data processing, reporting), the skill threshold for new entrants may rise—requiring higher-order competencies earlier in careers.
+2. **Entry-level skills pressure**. As AI absorbs routine tasks traditionally handled by junior workers (basic coding, content drafting, data processing, reporting), the skill threshold for new entrants may rise requiring higher order competencies earlier in careers.
 
 3. **Apprenticeship pathways need protection**. Saudi Arabia needs to preserve skill-building routes into white-collar careers when the traditional "learn by doing routine work" model is disrupted by AI.
 
@@ -53,7 +53,7 @@ Beyond theoretical predictions, what practical indicators should Saudi organizat
 ### For universities and training programs:
 
 - Does your curriculum still focus on skills that AI is rapidly absorbing?
-- Are students gaining the higher-order skills needed to work effectively with AI?
+- Are students gaining the higher order skills needed to work effectively with AI?
 - Are internship programs shifting to accommodate AI-integrated workflows?
 
 ### For policymakers:

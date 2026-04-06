@@ -3,15 +3,13 @@ import { type CollectionEntry, getCollection } from "astro:content";
 import PostDetails from "@/layouts/PostDetails.astro";
 import getSortedPosts from "@/utils/getSortedPosts";
 import { getPath } from "@/utils/getPath";
+import postFilter from "@/utils/postFilter";
 
 type Props = {
   post: CollectionEntry<"blog">;
 };
 
 export async function getStaticPaths() {
-  // Import our existing post filter that handles scheduling logic
-  import postFilter from "@/utils/postFilter";
-  
   // Get all non-draft posts
   const allPosts = await getCollection("blog", ({ data }) => !data.draft);
   
