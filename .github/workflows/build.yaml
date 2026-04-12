@@ -26,7 +26,7 @@ jobs:
       - name: Inject slug/short variables
         uses: rlespinasse/github-slug-action@v5   # this will put output as environment variable
       - name: Setup pnpm
-        uses: pnpm/action-setup@v5
+        uses: pnpm/action-setup@v6
         with:
           run_install: false
           version: ${{ env.pnpm_version }}
@@ -59,7 +59,7 @@ jobs:
           token: ${{ secrets.GITHUB_TOKEN }}
           fetch-depth: 1
       - name: Setup pnpm
-        uses: pnpm/action-setup@v5
+        uses: pnpm/action-setup@v6
         with:
           run_install: false
           version: ${{ env.pnpm_version }}
@@ -93,7 +93,7 @@ jobs:
         with:
           token: ${{ secrets.GITHUB_TOKEN }}
       - name: Setup pnpm
-        uses: pnpm/action-setup@v5
+        uses: pnpm/action-setup@v6
         with:
           run_install: false
           version: ${{ env.pnpm_version }}
